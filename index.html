@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+    <br><button onclick="queryData()">Query Database</button>
+    <table id="results"></table>
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+
+    // Example showing direct access to a local MySQL database
+    const mysql = require('mysql')
+
+    const connection = mysql.createConnection({
+      host: 'db.127.0.0.1.nip.io',
+      user: 'cfobjective',
+      password: 'cfobjective',
+      database: 'cfobjective'
+    });
+    connection.connect((err) => {
+      if (err) throw err;
+      console.log('Connected!');
+    });
+    function queryData(){
+        connection.query('SELECT * FROM employees', (err,rows) => {
+          if(err) throw err
+          console.log('Data received from Db:\n')
+          console.log(rows)
+          const table = document.getElementById('results')   
+          rows.forEach((element,index) => {
+            let row = table.insertRow(index) 
+            let cell1 = row.insertCell(0)
+            let cell2 = row.insertCell(1)
+            cell1.innerText = element.name
+            cell2.innerText = element.location
+          }, this);
+        });
+    }
+  </script>
+</html>
