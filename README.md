@@ -1,4 +1,5 @@
-# electron-quick-start
+# From cf.Objective() talk: Building Desktop Apps with Electron
+**Accompanies Slides [Building Desktop Apps with Electron](https://github.com/abramadams/cfobjective2017-Electron/blob/master/Building%20Desktop%20Apps%20with%20Electron.pdf)**
 
 **Clone and run for a quick way to see Electron in action.**
 
@@ -20,9 +21,9 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/electron/electron-quick-start
+git clone https://github.com/abramadams/cfobjective2017-Electron.git
 # Go into the repository
-cd electron-quick-start
+cd cfobjective2017-Electron
 # Install dependencies
 npm install
 # Run the app
