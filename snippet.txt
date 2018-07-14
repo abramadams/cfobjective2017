@@ -1,49 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-    <br><button onclick="queryData()">Query Database</button>
-    <table id="results"></table>
 
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+</head>
 
+<body>
+  <h1>Hello World!</h1>
+  <!-- All of the Node.js APIs are available in this renderer process. -->
+  We are using Node.js
   <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-    const mysql = require('mysql');
-    const connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'cfobjective',
-      password: 'cfobjective',
-      database: 'cfobjective'
-    });
-    connection.connect((err) => {
-      if (err) throw err;
-      console.log('Connected!');
-    });
-    function queryData(){
-        connection.query('SELECT * FROM employees', (err,rows) => {
-          if(err) throw err
+    document.write(process.versions.node)
+  </script>, Chromium
+  <script>
+    document.write(process.versions.chrome)
+  </script>, and Electron
+  <script>
+    document.write(process.versions.electron)
+  </script>.
+  <br>
+  <button class="btn btn-large btn-success" onclick="queryData()">Query Database</button>
+  <table id="results" class="table table-striped"></table>
 
-          console.log('Data received from Db:\n')
-          console.log(rows)
-          const table = document.getElementById('results')   
-          rows.forEach((element,index) => {
-            let row = table.insertRow(index) 
-            let cell1 = row.insertCell(0)
-            let cell2 = row.insertCell(1)
-            cell1.innerText = element.name
-            cell2.innerText = element.location
-          }, this);
-        });
-    }
-  </script>
+</body>
+
+<script>
+  // You can also require other files to run in this process
+ require('./renderer.js')
+</script>
+
 </html>

@@ -1,6 +1,12 @@
 # From cf.Objective() talk: Building Desktop Apps with Electron
 **Accompanies Slides [Building Desktop Apps with Electron](https://github.com/abramadams/cfobjective2017-Electron/blob/master/Building%20Desktop%20Apps%20with%20Electron.pdf)**
 
+Example requires MySQL server installed and the accompanying `electron.sql` data file loaded. I.e, from the commandline in your project root:
+```bash
+$ mysql -u root -p -e"create database electron"
+$ mysql -u root -p electron < electron.sql
+```
+
 **Clone and run for a quick way to see Electron in action.**
 
 This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation.
